@@ -14,4 +14,6 @@ app.get("/", (request, response) => {
   }
 });
 
+app.use(require("./routes/managerRoutes"));
+
 app.listen(PORT, () => console.log(`server is running on ${PORT}`));
