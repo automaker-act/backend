@@ -7,6 +7,6 @@ const router = express.Router();
 // 회원가입 API 라우트
 router.post("/signup", join);
 // 로그인 API
-router.post("/login", login);
+router.post("/signin", login);
 
 module.exports = router;
