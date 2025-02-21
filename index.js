@@ -1,19 +1,18 @@
 const express = require("express");
-const PORT = 8080;
 require("dotenv").config();
 
-const app = express();
+const authRoutes = require("./routes/authRoutes");
 
-app.get("/", (request, response) => {
-  try {
-    response.send(
-      "Hello World"
-    );
-  } catch (error) {
-    return response.status(500).json({ error: error.message });
-  }
+const app = express();
+const PORT = 8080;
+
+app.use(express.json());
+app.use("/user", authRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Hello World");
 });
 
-app.use(require("./routes/managerRoutes"));
-
-app.listen(PORT, () => console.log(`server is running on ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`서버 실행 중: http://localhost:${PORT}`);
+});
